@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { NgbModal, ModalDismissReasons } from '@ng-bootstrap/ng-bootstrap';
+import { NotificationsService } from 'angular2-notifications';
 
 @Component({
     selector: 'app-modal',
@@ -27,4 +28,5 @@ export class ModalComponent {
             return  `with: ${reason}`;
         }
     }
+    
 }

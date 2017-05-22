@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {FormBuilder, FormGroup} from '@angular/forms';
+import { NotificationsService } from 'angular2-notifications';
+
 
 @Component({
     selector: 'app-buttons',
