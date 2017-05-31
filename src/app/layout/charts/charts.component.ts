@@ -1,9 +1,12 @@
 import { Component, OnInit } from '@angular/core';
-
+import {SineWaveDataService} from '../../sinewave-data.service';
+import {ReplaySubject} from 'rxjs/Rx';
 @Component({
+    moduleId: module.id,
     selector: 'app-charts',
     templateUrl: './charts.component.html',
-    styleUrls: ['./charts.component.scss']
+    styleUrls: ['./charts.component.scss'],
+    providers: [SineWaveDataService]
 })
 export class ChartsComponent implements OnInit {
     // bar chart
@@ -109,6 +112,9 @@ export class ChartsComponent implements OnInit {
         * assign it;
         */
     }
-    constructor() { }
+    message: string;
+  incomingData: ReplaySubject<string>;
+    constructor(private dataService: SineWaveDataService) { 
+    }
     ngOnInit() { }
 }
