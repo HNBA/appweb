@@ -97,12 +97,12 @@ function attachWS(server) {
 
 
     function deg2rad(val) {
-      return val / 0.89;
+      return val + 19;
     }
 
     function observableSineWave() {
-        let waveVal = 0;
-            waveVal = waveVal == 360 ? 0 : waveVal + 0.1;
-            return Math.sin(deg2rad(waveVal));
+        let waveVal = 40;
+           
+            return deg2rad(waveVal);
         }
 }());
