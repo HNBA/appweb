@@ -10,7 +10,8 @@ import { AppComponent } from './app.component';
 import { AuthGuard } from './shared';
 import { PushNotificationsModule } from 'angular2-notifications';
 import { BookService } from './book.service';
-
+import { MaterialModule, MdButton } from '@angular/material';
+import 'hammerjs';
 // AoT requires an exported function for factories
 export function HttpLoaderFactory(http: Http) {
     return new TranslateHttpLoader(http, '/assets/i18n/', '.json');
@@ -26,6 +27,7 @@ export function HttpLoaderFactory(http: Http) {
         FormsModule,
         HttpModule,
         AppRoutingModule,
+         MaterialModule,
         TranslateModule.forRoot({
             loader: {
                 provide: TranslateLoader,

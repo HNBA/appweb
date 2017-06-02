@@ -4,7 +4,10 @@
     var proxy = require('express-http-proxy');
 
     var http = require('http');
-
+    var request = require("request");
+    var url_1 = "http://developer.cumtd.com/api/v2.2/json/GetStop?" +
+    "key=d99803c970a04223998cabd90a741633" +
+    "&stop_id=it"
     //var WebSocketServer = require('websocket').server;
     const app = express();
     const server = http.createServer(app);
@@ -101,8 +104,14 @@ function attachWS(server) {
     }
 
     function observableSineWave() {
-        let waveVal = 40;
-           
-            return deg2rad(waveVal);
+    request({
+    url: url_1,
+    json: true
+        }, function (error, response, body) {
+
+            if (!error && response.statusCode === 200) {
+            console.log(body) // Print the json response
+        }
+                })
         }
 }());

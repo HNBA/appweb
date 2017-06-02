@@ -18,7 +18,8 @@
       "dom"
     ],
     "types": [
-      "firebase"
+      "firebase",
+      "hammerjs"
     ]
   }
 }
