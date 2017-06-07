@@ -4,6 +4,7 @@ import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { TranslateModule, TranslateLoader } from '@ngx-translate/core';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -12,6 +13,7 @@ import { PushNotificationsModule } from 'angular2-notifications';
 import { BookService } from './book.service';
 import { MaterialModule, MdButton } from '@angular/material';
 import 'hammerjs';
+import{ ToastModule} from 'ng2-toastr/ng2-toastr';
 // AoT requires an exported function for factories
 export function HttpLoaderFactory(http: Http) {
     return new TranslateHttpLoader(http, '/assets/i18n/', '.json');
@@ -22,6 +24,8 @@ export function HttpLoaderFactory(http: Http) {
         AppComponent,
     ],
     imports: [
+        BrowserAnimationsModule,
+        ToastModule.forRoot(),
         PushNotificationsModule,
         BrowserModule,
         FormsModule,

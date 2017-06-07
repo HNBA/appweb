@@ -30,7 +30,7 @@ export class TablesComponent implements OnInit {
       option: Object;
 result: Object;
   constructor(private _pushNotifications: PushNotificationsService,private logservice: LogService,
-  public dataService: SineWaveDataService,private http: Http,jsonp : Jsonp){
+  private http: Http,jsonp : Jsonp){
     _pushNotifications.requestPermission(); // request for permission as soon as component loads
     jsonp.request('https://www.highcharts.com/samples/data/jsonp.php?filename=aapl-c.json&callback=JSONP_CALLBACK').subscribe(res => {
             this.options = {
@@ -71,8 +71,7 @@ jsonp.request('https://www.highcharts.com/samples/data/jsonp.php?filename=aapl-c
         
     
   }
- 
- incomingData = this.dataService.observableSineWave();
+
  
   createRange(number){
     this.items = [];

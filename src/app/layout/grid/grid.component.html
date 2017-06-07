@@ -6,4 +6,7 @@
 </ul>
 
 <div *ngIf="errorMessage"> {{errorMessage}} </div>
-<button type="button" class="btn btn-info">Info</button>
+ <ul>
+   <li *ngFor="let item of chartData">{{item}}</li>
+ </ul>
+ <!--<button class="btn btn-default" (click)="playsound()">Toastr Tester</button>-->

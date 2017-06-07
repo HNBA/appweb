@@ -104,14 +104,7 @@ function attachWS(server) {
     }
 
     function observableSineWave() {
-    request({
-    url: url_1,
-    json: true
-        }, function (error, response, body) {
-
-            if (!error && response.statusCode === 200) {
-            console.log(body) // Print the json response
+        let val=12;
+    return val+1;
         }
-                })
-        }
-}());
+})();

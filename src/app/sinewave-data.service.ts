@@ -5,8 +5,9 @@ let ch = new channel();
 @Injectable()
 export class SineWaveDataService {
 
-  observableSineWave() {
-      let subject = [];
+  observableSineWave() : Array<number>{
+      let subject = Array<number>(1);
+      
       /*let ws = new WebSocket('ws://' + window.location.hostname + ':' + window.location.port, 'sinedata');
       ws.onmessage = function(e: MessageEvent) {
           return subject.next(e.data)
@@ -27,8 +28,10 @@ export class SineWaveDataService {
       ch.receive(function (msg) {
          // console.log('received message');
           //console.log(msg);
-         setTimeout(ch.send, 1000, {service:'sineWave'});
-          subject.push(msg.value)
+         setTimeout(ch.send, 9000, {service:'sineWave'});
+           for(let i=1;i<1000;i++){
+           subject.push(msg.value+i)
+         }
         });
       return subject;
   }
