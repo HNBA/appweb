@@ -14,6 +14,7 @@ import { BookService } from './book.service';
 import { MaterialModule, MdButton } from '@angular/material';
 import 'hammerjs';
 import{ ToastModule} from 'ng2-toastr/ng2-toastr';
+import { APP_BASE_HREF, Location } from '@angular/common';
 // AoT requires an exported function for factories
 export function HttpLoaderFactory(http: Http) {
     return new TranslateHttpLoader(http, '/assets/i18n/', '.json');
@@ -40,7 +41,9 @@ export function HttpLoaderFactory(http: Http) {
             }
         })
     ],
-    providers: [AuthGuard,BookService],
+    providers: [AuthGuard,BookService,
+    { provide: APP_BASE_HREF, useValue: window['_app_base'] || '/' }
+    ],
     bootstrap: [AppComponent]
 })
 export class AppModule { }

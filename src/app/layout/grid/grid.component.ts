@@ -15,12 +15,11 @@ export class GridComponent implements OnInit {
    observableBooks: Observable<Book[]>
    books: Book[];
    errorMessage: String;
-   chartData:Array<Number>;
    audio_success = new Audio("assets/success.mp3");
    audio_error = new Audio("assets/error.mp3");
    constructor(private dataService: SineWaveDataService,private bookService: BookService
        ,public toastr: ToastsManager, vcr: ViewContainerRef,private _pushNotifications: PushNotificationsService) {
-       this.chartData = this.dataService.observableSineWave();
+       //this.chartData = this.dataService.observableSineWave();
         this.toastr.setRootViewContainerRef(vcr);
     }
    ngOnInit() {

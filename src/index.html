@@ -3,15 +3,14 @@
 <head>
     <meta charset="utf-8">
     <title>APP WEB</title>
-    <base href="/">
-
+    <base href="/appweb">
+    <script>
+     (function() {
+      window['_app_base'] = '/' + window.location.pathname.split('/')[1];
+      })();
+    </script>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="icon" type="image/x-icon" href="favicon.ico">
-    
-    <link rel="stylesheet" href="https://unpkg.com/@salesforce-ux/design-system/assets/styles/salesforce-lightning-design-system.min.css">
-    <link href="node_modules/ng2-toastr/bundles/ng2-toastr.min.css" rel="stylesheet" />
-    <script src="node_modules/ng2-toastr/bundles/ng2-toastr.min.js"></script>
-
 </head>
 <body>
     <app-root>
