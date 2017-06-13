@@ -12,6 +12,7 @@ import {ReplaySubject} from 'rxjs/Rx';
 import { LogService } from '../../shared/log/log.service';
 import { Jsonp } from '@angular/http';
 import 'rxjs/add/operator/map';
+declare var require: any;
 @Component({
     moduleId: module.id,
     selector: 'app-tables',
@@ -86,10 +87,10 @@ jsonp.request('https://www.highcharts.com/samples/data/jsonp.php?filename=aapl-c
   }
   notify(){ //our function to be called on click
     let options = { //set options
-      body: "The truth is, I'am Iron Man!",
-      icon: "assets/images/ironman.png" //adding an icon
+      body: "New notification !",
+      icon: "assets/images/carrefour.png" //adding an icon
     }
-    let notify = this._pushNotifications.create('Iron Man', options).subscribe( //creates a notification
+    let notify = this._pushNotifications.create('Carrefour', options).subscribe( //creates a notification
         res => console.log(res),
         err => console.log(err)
     );
@@ -97,9 +98,9 @@ jsonp.request('https://www.highcharts.com/samples/data/jsonp.php?filename=aapl-c
   notifyLog(){ //our function to be called on click
     let options = { //set options
       body: "Log loaded !",
-      icon: "assets/images/ironman.png" //adding an icon
+      icon: "assets/images/carrefour.png" //adding an icon
     }
-    let notify = this._pushNotifications.create('Iron Man', options).subscribe( //creates a notification
+    let notify = this._pushNotifications.create('Carrefour', options).subscribe( //creates a notification
         res => console.log(res),
         err => console.log(err)
     );

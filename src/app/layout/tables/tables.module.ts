@@ -1,4 +1,3 @@
-
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import {Plotter} from '../../plotter';
@@ -9,6 +8,7 @@ import {Printer} from '../../printer';
 import { HttpModule, JsonpModule } from '@angular/http';
 import { ChartsModule as Ng2Charts } from 'ng2-charts';
 import { ChartModule } from 'angular2-highcharts';
+import { RouterModule, Routes } from '@angular/router';
 declare var require: any;
 @NgModule({
     imports: [
