@@ -12,7 +12,6 @@ import {ReplaySubject} from 'rxjs/Rx';
 import { LogService } from '../../shared/log/log.service';
 import { Jsonp } from '@angular/http';
 import 'rxjs/add/operator/map';
-declare var require: any;
 @Component({
     moduleId: module.id,
     selector: 'app-tables',

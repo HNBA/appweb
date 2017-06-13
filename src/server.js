@@ -1,5 +1,13 @@
 (function() {
 
+
+//var spawn=require ('child_process').spawn;
+//spawn('ng',['serve','--allowJs']);
+//start();
+
+//function start() {
+
+
     var express = require('express');
     var proxy = require('express-http-proxy');
 
@@ -13,6 +21,7 @@
     const server = http.createServer(app);
     app.use('/', proxy('localhost:4200', {
          forwardPath: function(req, res) {
+            console.log(require('url').parse(req.url).path);
             return require('url').parse(req.url).path;
          }}));
 
@@ -21,6 +30,9 @@
     });
 
      attachWS(server);
+
+//}
+
 
 function attachWS(server) {
     var alert=require('./alert.js');
@@ -35,9 +47,13 @@ function attachWS(server) {
     var fs=require('fs');
     var WebSocket=require('ws');
     var URL=require('url').URL;
-    var channel=require('C:/Users/BELKHIR/Downloads/AppWeb/src/channel');
+    var channel=require('./channel');
     var WebSocketServer = WebSocket.Server
-    , wss = new WebSocketServer({server:server});
+    , wss = new WebSocketServer({server:server //,
+	//	ssl: true,
+	//	ssl_key: '/opt/appweb/ssl/server.key',
+          //      ssl_cert: '/opt/appweb/ssl/server.crt'
+	 });
     wss.on('connection', function(ws, req) {
         console.log('connection');
      //   var urlquery=new URL(req.headers.origin+req.url);
@@ -47,18 +63,21 @@ function attachWS(server) {
 		ch.receive(function (req) {
 		    switch (req.service) {
             case 'alert':
-                alert(req, function (doc) { ch.send(doc)});
+                alert(req, function (doc) { ch.send({service:'alert', doc:doc})});
             case 'logs':
                 console.log('request for service logs');
                // create filter based on request (req)
-               readElasticDocs(esclient,{index:'logstash-2017.05.30',type:'logs'}, function (err, doc) {
+               readElasticDocs(esclient,{index:'logstash-2017.06.08',type:'logs'}, function (err, doc) {
                    if (err) { console.log('error')}
                    else {
                        console.log('send log');
-                       ch.send({doc:doc});
+                       ch.send({service:'logs', doc:doc});
+                       throw(Error('yizzi'));
                    }
                 });
-            case 'sineWave': ch.send({value:observableSineWave()});
+            case 'sineWave': 
+                console.log('service sineWave');
+                ch.send({service:'sineWave', value:observableSineWave()});
                 break;
             case 'time': ch.send({time:new Date()});
                break;
@@ -68,9 +87,9 @@ function attachWS(server) {
                 
 					    fs.readFile(req.filename, 'utf8', function (err, data) {
 						if (err) {
-						    ch.send({filename: req.filename, error: err});
+						    ch.send({service:'time', filename: req.filename, error: err});
 						} else {
-                                                    ch.send({filename: req.filename, data:data});
+                                                    ch.send({service:'time', filename: req.filename, data:data});
 						}
 					    });
 			    break;

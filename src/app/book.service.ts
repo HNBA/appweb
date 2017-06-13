@@ -8,7 +8,7 @@ import { Book } from './book';
 
 @Injectable()
 export class BookService {
-    url = "http://stockmarket.streamdata.io/prices";
+    url = "";
 	constructor(private http:Http) { }
     getBooksWithObservable(): Observable<Book[]> {
         return this.http.get(this.url)
