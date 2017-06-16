@@ -23,6 +23,7 @@ export function HttpLoaderFactory(http: Http) {
 @NgModule({
     declarations: [
         AppComponent,
+
     ],
     imports: [
         BrowserAnimationsModule,

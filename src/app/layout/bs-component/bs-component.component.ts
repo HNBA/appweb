@@ -2,47 +2,65 @@ import { Component, OnInit, ViewContainerRef } from '@angular/core';
 import {NgbModal, ModalDismissReasons} from '@ng-bootstrap/ng-bootstrap';
 import { AlertService, AlertMessage } from '../../shared/services/alert.service';
 import { ToastsManager } from 'ng2-toastr/ng2-toastr';
+declare var CanvasJS: any;
+var dps = []; // dataPoints
+var xVal = 0;
+var yVal = 100;	
+var updateInterval = 100;
+var dataLength = 500; // number of dataPoints visible at any point
+
 @Component({
-    selector: 'app-bs-component',
-    templateUrl: './bs-component.component.html',
-    styleUrls: ['./bs-component.component.scss'],
-    providers:[AlertService]
+    selector: 'canvas-graph',
+    template: '<div id="chartContainer" style="height: 400px; width: 100%;"></div>'
 })
+
+
 export class BsComponentComponent {
-     objAlert: AlertMessage;
-     ViewContainerRef:any;
-    constructor(
-        private alertService: AlertService,public toastr: ToastsManager, vcr: ViewContainerRef) {
-             this.toastr.setRootViewContainerRef(vcr);
+
+    constructor(){
+    }
+     ngOnInit(): any {
+        this.chart();
     }
 
-showSuccess() {
-        this.toastr.success('You are awesome!', 'Success!');
-      }
-    
-      showError() {
-        this.toastr.error('This is not good!', 'Oops!');
-      }
-    
-      showWarning() {
-        this.toastr.warning('You are being warned.', 'Alert!');
-      }
-    
-      showInfo() {
-        this.toastr.info('Just some information for you.');
-      }
-      
-      showCustom() {
-        this.toastr.custom('<span style="color: red">Message in red.</span>', null, {enableHTML: true});
-      }
-    ngOnInit() {
-        this.alertService.alertStatus.subscribe((val: AlertMessage) => {
-            this.objAlert = { show: val.show, message: val.message };
+chart(){
+        var chart = new CanvasJS.Chart("chartContainer", {
+            zoomEnabled:true,
+            title: {
+                text: "Real Time Chart"
+            },
+            //animationEnabled: true,
+            data: [{
+				      type: "line",
+			      	dataPoints: dps 
+		            	}]
         });
-    }
+    var updateChart = function (count) {
+			count = count || 1;
+			// count is number of times loop runs to generate random dataPoints.
+		
+			for (var j = 0; j < count; j++) {	
+				yVal = yVal +  Math.round(5 + Math.random() *(-5-5));
+				dps.push({
+					x: xVal,
+					y: yVal
+				});
+				xVal++;
+			};
+			if (dps.length > dataLength)
+			{
+				dps.shift();				
+			}
+			
+			chart.render();		
 
-    onCloseAlert(reason: string) {
-        let objCloseAlert: AlertMessage = { show: false, message: '' };
-        this.alertService.showAlert(false, null);
+		};
+
+		// generates first set of dataPoints
+		updateChart(dataLength); 
+
+		// update chart after specified time. 
+		setInterval(() => { updateChart(dataLength); }, 1000); 
     }
+    
  }

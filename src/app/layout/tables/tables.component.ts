@@ -12,7 +12,10 @@ import {ReplaySubject} from 'rxjs/Rx';
 import { LogService } from '../../shared/log/log.service';
 import { Jsonp } from '@angular/http';
 import 'rxjs/add/operator/map';
+import { BsComponentComponent} from '../bs-component/bs-component.component';
+
 declare var require: any;
+
 @Component({
     moduleId: module.id,
     selector: 'app-tables',
@@ -67,10 +70,9 @@ jsonp.request('https://www.highcharts.com/samples/data/jsonp.php?filename=aapl-c
                     }
                 }]
             };
-        });
-        
-    
+        });  
   }
+
 
  
   createRange(number){
@@ -126,5 +128,4 @@ jsonp.request('https://www.highcharts.com/samples/data/jsonp.php?filename=aapl-c
     public chartHovered(e: any): void {
         // console.log(e);
     }
-
 }
