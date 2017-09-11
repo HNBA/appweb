@@ -1,8 +1,0 @@
----
-- name: restart kibana
-  service: name=kibana state=restarted
-#  notify: health-check
-
-#- name: health-check
-#  include: health-check.yml
-

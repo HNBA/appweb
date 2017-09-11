@@ -1,4 +1,7 @@
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> 4c2ee4987027b63ad242dab14da597655c24ad03
 # SB Admin rewritten in Angular4 and Bootstrap 4
 
 Simple Dashboard Admin App built using Angular 4 and Bootstrap 4
@@ -55,6 +58,7 @@ Before running the tests make sure you are serving the app via `ng serve`.
 ### Further help
 
 To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
+<<<<<<< HEAD
 =======
 # :bell: Internship project - Monitoring - OSS
 
@@ -85,3 +89,5 @@ role. If errors persists contact the projet_oss@carrefour.com team.
 
 
 >>>>>>> d5a31075e93e164e05cf19fb0957cea29a6eab61
+=======
+>>>>>>> 4c2ee4987027b63ad242dab14da597655c24ad03

@@ -5,7 +5,10 @@ import { FormsModule } from '@angular/forms';
 import { TranslateModule, TranslateLoader } from '@ngx-translate/core';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+<<<<<<< HEAD
 import {ReactiveFormsModule} from '@angular/forms';
+=======
+>>>>>>> 4c2ee4987027b63ad242dab14da597655c24ad03
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -24,18 +27,31 @@ export function HttpLoaderFactory(http: Http) {
 @NgModule({
     declarations: [
         AppComponent,
+<<<<<<< HEAD
           ],
     imports: [
 ReactiveFormsModule,
+=======
+
+    ],
+    imports: [
+>>>>>>> 4c2ee4987027b63ad242dab14da597655c24ad03
         BrowserAnimationsModule,
         ToastModule.forRoot(),
         PushNotificationsModule,
         BrowserModule,
+<<<<<<< HEAD
         HttpModule,
         AppRoutingModule,
         MaterialModule,
         BrowserModule,
         FormsModule,
+=======
+        FormsModule,
+        HttpModule,
+        AppRoutingModule,
+         MaterialModule,
+>>>>>>> 4c2ee4987027b63ad242dab14da597655c24ad03
         TranslateModule.forRoot({
             loader: {
                 provide: TranslateLoader,

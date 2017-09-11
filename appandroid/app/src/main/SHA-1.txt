@@ -1,3 +1,0 @@
-sha-1:
-keytool -list -v -keystore "C:\Users\BELKHIR\.android\debug.key
-store" -alias androiddebugkey -storepass android -keypass android

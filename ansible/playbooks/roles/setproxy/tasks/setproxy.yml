@@ -1,4 +1,0 @@
----
-
-- name: define proxy
-  shell: sudo bash -c "echo -e 'export http_proxy="http://{{ proxy }}"\nexport https_proxy="https://{{ proxy }}"' >> /etc/environment"

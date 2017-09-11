@@ -1,4 +1,0 @@
-    grok {
-       match => { "message" => "\[(?<date>.*?)\]\[INFO \]\[index.shard              \] \[(?<server>.*?)\] \[je-(?<ean>.*?)-(?<jeyear>....)\]\[.*?\] updating refresh_interval from \[.*?\] to \[.*?\]"
-    }
-   }

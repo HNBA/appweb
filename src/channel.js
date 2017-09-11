@@ -41,4 +41,8 @@ function channel (socket) {
 
 try {
   module.exports = channel
+<<<<<<< HEAD
 } catch (err) {};
+=======
+} catch (err) {};
+>>>>>>> 4c2ee4987027b63ad242dab14da597655c24ad03

@@ -1,4 +1,7 @@
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> 4c2ee4987027b63ad242dab14da597655c24ad03
 # See http://help.github.com/ignore-files/ for more about ignoring files.
 
 # compiled output
@@ -41,6 +44,7 @@ testem.log
 # System Files
 .DS_Store
 Thumbs.db
+<<<<<<< HEAD
 =======
 .gradle
 /local.properties
@@ -50,3 +54,5 @@ Thumbs.db
 /build
 /captures
 >>>>>>> d5a31075e93e164e05cf19fb0957cea29a6eab61
+=======
+>>>>>>> 4c2ee4987027b63ad242dab14da597655c24ad03

@@ -1,3 +1,7 @@
+<<<<<<< HEAD
+=======
+// first we do a search, and specify a scroll timeout
+>>>>>>> 4c2ee4987027b63ad242dab14da597655c24ad03
 function readElasticDocs (client, options, callback) {
   var lasttime, delay, scroll;
   var origin;
@@ -6,6 +10,7 @@ function readElasticDocs (client, options, callback) {
           index: options.index,
           type: options.type,
           scroll: scroll,
+<<<<<<< HEAD
 
    }
 , function getMoreUntilDone(error, response) {
@@ -15,6 +20,29 @@ function readElasticDocs (client, options, callback) {
                   if (response.hits && response.hits.hits) {
                      response.hits.hits.forEach(function (hit) {
                         var timestamp = (new Date(hit._source["@timestamp"])).getTime();
+=======
+          query: {
+             // "filtered": {"query": options.query, "filter": options.filter},
+             "filter": {
+             "bool": {
+               must :[{"range":
+                   {"@timestamp":
+                   {"format":"epoch_millis", "gt":lasttime}}}]
+
+}
+
+          }}}, function getMoreUntilDone(error, response) {
+                if (error) {
+                    callback(error,'a');
+                } else {
+                  // collect all the records
+                  if (response.hits && response.hits.hits) {
+                     //console.log("******** "+response.hits.hits.length);
+                     response.hits.hits.forEach(function (hit) {
+                        //console.log(hit);
+                        var timestamp = (new Date(hit._source["@timestamp"])).getTime();
+                       // if (timestamp < origin) console.log("**** lasttime="+lasttime+ " timestamp="+timestamp);
+>>>>>>> 4c2ee4987027b63ad242dab14da597655c24ad03
                         if (timestamp > lasttime) lasttime=timestamp;
                         try {
                             callback(null, hit._source);
@@ -22,6 +50,10 @@ function readElasticDocs (client, options, callback) {
                         });
 
                       if (response.hits.hits.length !== 0) {
+<<<<<<< HEAD
+=======
+                        // now we can call scroll over and over
+>>>>>>> 4c2ee4987027b63ad242dab14da597655c24ad03
                         client.scroll({
                           scrollId: response._scroll_id,
                           scroll: scroll
@@ -40,8 +72,13 @@ function readElasticDocs (client, options, callback) {
         origin=lasttime;
         delay=options.delay?options.delay:10000;
         scroll=options.scroll?options.scroll:'30s';
+<<<<<<< HEAD
        options.query=options.query?options.query:'{ "match": { "plugin": "cpu" }}';
        options.filter=options.filter?options.filter:'{{ "range": {"value": {"gte":  20,"lt":   30}}}}';
+=======
+        options.query=options.query?options.query:'{"match_all":{}}';
+        options.filter=options.filter?options.filter:'{"match_all":{}}';
+>>>>>>> 4c2ee4987027b63ad242dab14da597655c24ad03
       _readesdocs();
      }
 };

@@ -1,3 +1,0 @@
----
-- name: restart appweb
-  service: name=appweb state=restarted

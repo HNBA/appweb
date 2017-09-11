@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+<<<<<<< HEAD
 import { Router, ActivatedRoute } from '@angular/router';
 
 import { AuthenticationService } from '../authentication.service';
@@ -36,3 +37,23 @@ export class LoginComponent implements OnInit {
 
 }
 
+=======
+import { Router } from '@angular/router';
+
+@Component({
+    selector: 'app-login',
+    templateUrl: './login.component.html',
+    styleUrls: ['./login.component.scss']
+})
+export class LoginComponent implements OnInit {
+
+    constructor(public router: Router) { }
+
+    ngOnInit() { }
+
+    onLoggedin() {
+        localStorage.setItem('isLoggedin', 'true');
+    }
+
+}
+>>>>>>> 4c2ee4987027b63ad242dab14da597655c24ad03

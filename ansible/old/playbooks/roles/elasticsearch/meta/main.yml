@@ -1,3 +1,0 @@
----
-dependencies:
-- { role: tools, logrotate_set: [{path: /var/log/elasticsearch/phenix-elk.log, name: phenix-elk, options: [daily, rotate 7, missingok, compress], scripts: [{name: "postrotate", script: "/bin/kill -HUP `cat /var/run/syslogd.pid 2> /dev/null` 2> /dev/null || true"}]}], tags: [elk, elasticsearch] }

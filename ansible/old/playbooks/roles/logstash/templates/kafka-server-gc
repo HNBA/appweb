@@ -1,6 +1,0 @@
-     grok {
-       match => { "message" => [
-         "^(?<date>.*?): " 
-        ]}
-     }
-

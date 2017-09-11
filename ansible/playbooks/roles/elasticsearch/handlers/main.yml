@@ -1,7 +1,0 @@
----
-- name: Restart elasticsearch
-  service: name=elasticsearch state=restarted
-#  notify: health-check
-
-#- name: health-check
-#  include: health-check.yml

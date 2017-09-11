@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 rt {
+=======
+chart {
+>>>>>>> 4c2ee4987027b63ad242dab14da597655c24ad03
         display: block;
       }
 .row{
@@ -14,13 +18,21 @@ button{
 }
   .timeline {
     position: relative;
+<<<<<<< HEAD
     padding: 0px 0px 0px 0px;
+=======
+    padding: 10px 0 10px;
+>>>>>>> 4c2ee4987027b63ad242dab14da597655c24ad03
     list-style: none;
 }
 
 .timeline > li {
     position: relative;
+<<<<<<< HEAD
     margin-bottom: 0px;
+=======
+    margin-bottom: 10px;
+>>>>>>> 4c2ee4987027b63ad242dab14da597655c24ad03
 }
 
 .timeline > li:before,
@@ -47,8 +59,13 @@ button{
     float: left;
     position: relative;
     width: 100%;
+<<<<<<< HEAD
     padding: 0px;
     border: 0px solid #d4d4d4;
+=======
+    padding: 10px;
+    border: 1px solid #d4d4d4;
+>>>>>>> 4c2ee4987027b63ad242dab14da597655c24ad03
     border-radius: 2px;
     -webkit-box-shadow: 0 1px 6px rgba(0,0,0,0.175);
     box-shadow: 0 1px 6px rgba(0,0,0,0.175);
@@ -62,8 +79,13 @@ button{
     right: -15px;
     border-top: 15px solid transparent;
     border-right: 0 solid #ccc;
+<<<<<<< HEAD
     border-bottom: 0px solid transparent;
     border-left: 0px solid #ccc;
+=======
+    border-bottom: 15px solid transparent;
+    border-left: 15px solid #ccc;
+>>>>>>> 4c2ee4987027b63ad242dab14da597655c24ad03
 }
 
 .timeline > li > .timeline-panel:after {
@@ -74,8 +96,13 @@ button{
     right: -14px;
     border-top: 14px solid transparent;
     border-right: 0 solid #fff;
+<<<<<<< HEAD
     border-bottom: 0x solid transparent;
     border-left: 0px solid #fff;
+=======
+    border-bottom: 14px solid transparent;
+    border-left: 14px solid #fff;
+>>>>>>> 4c2ee4987027b63ad242dab14da597655c24ad03
 }
 
 .timeline > li > .timeline-badge {

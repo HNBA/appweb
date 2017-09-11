@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 $topnav-background-color: #34495E;
+=======
+$topnav-background-color: #222;
+>>>>>>> 4c2ee4987027b63ad242dab14da597655c24ad03
 .topnav {
     border-radius: 0;
     background-color: $topnav-background-color;
@@ -12,7 +16,11 @@ $topnav-background-color: #34495E;
     .top-right-nav{
         .buy-now{
             a{
+<<<<<<< HEAD
                 color:#9B193B;
+=======
+                color:#999;
+>>>>>>> 4c2ee4987027b63ad242dab14da597655c24ad03
             }
         }
         .dropdown-menu{
@@ -70,4 +78,7 @@ $topnav-background-color: #34495E;
 .header .navbar {
     background: $topnav-background-color !important;
 }
+<<<<<<< HEAD
 
+=======
+>>>>>>> 4c2ee4987027b63ad242dab14da597655c24ad03

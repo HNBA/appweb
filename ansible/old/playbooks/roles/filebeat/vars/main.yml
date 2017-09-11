@@ -1,9 +1,0 @@
----
-logstash_hosts: "[{% set comma = joiner(',') %}{% for host in groups['logstash'] %}{{ comma() }}'{{ host }}:{{ logstash_port }}'{% endfor %}]"
-paths: [
-  #'/var/log/messages',
-  #'/var/log/syslog',
-  #'/var/log/secure',
-  #'/var/log/haproxy/haproxy.log',
-  '/var/log/auth.log'
-  ]

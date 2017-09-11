@@ -3,6 +3,7 @@
         <div class="col-md-4 push-md-4">
             <img src="assets/images/logo.png" width="150px" class="user-avatar" />
             <h1>LOGIN</h1>
+<<<<<<< HEAD
             <form role="form" (ngSubmit)="f.form.valid" #f="ngForm">
                 <div class="form-content">
                  <label for="username">Username</label>
@@ -12,6 +13,18 @@
             <label for="password">Password</label>
             <input type="password" class="form-control" name="password" [(ngModel)]="data.password" #password="ngModel" required />
         </div>
+=======
+            <form role="form">
+                <div class="form-content">
+                    <div class="form-group">
+                        <input type="text" ng-model="name" class="form-control input-underline input-lg" id="" placeholder="Email">
+                    </div>
+
+                    <div class="form-group">
+                        <input type="password" class="form-control input-underline input-lg" id="" placeholder="Password">
+                    </div>
+                </div>
+>>>>>>> 4c2ee4987027b63ad242dab14da597655c24ad03
                 <a class="btn rounded-btn" [routerLink]="['/dashboard']" (click)="onLoggedin()"> Log in </a>
                 &nbsp;
                 <a class="btn rounded-btn" [routerLink]="['/signup']">Register</a>
@@ -19,4 +32,7 @@
         </div>
     </div>
 </div>
+<<<<<<< HEAD
 
+=======
+>>>>>>> 4c2ee4987027b63ad242dab14da597655c24ad03

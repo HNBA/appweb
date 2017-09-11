@@ -1,4 +1,0 @@
----
-- name: Wait for kibana to launch services
-  wait_for:  port={{ kibana_port }} delay=5 timeout=60
-

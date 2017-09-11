@@ -1,7 +1,0 @@
-      grok {
-      match => { "message" => "(?<date> (?<hostname>.*?) sudo: pam_unix(sudo:session): session (?<status>.*?) for user root by (?<user>.*?)\(uid=(?<uid>[0-9]*?)\)"
-             }
- } 
-
-
-

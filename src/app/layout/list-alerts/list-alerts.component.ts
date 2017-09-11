@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 import { Component, OnInit,AfterViewInit } from '@angular/core';
 import {SineWaveDataService} from '../../sinewave-data.service';
 declare var Highcharts : any ;
@@ -84,3 +85,20 @@ Highcharts.chart('container', {
 }
 }
 
+=======
+import { Component, OnInit } from '@angular/core';
+
+@Component({
+  selector: 'app-list-alerts',
+  templateUrl: './list-alerts.component.html',
+  styleUrls: ['./list-alerts.component.scss']
+})
+export class ListAlertsComponent implements OnInit {
+
+  constructor() { }
+
+  ngOnInit() {
+  }
+
+}
+>>>>>>> 4c2ee4987027b63ad242dab14da597655c24ad03

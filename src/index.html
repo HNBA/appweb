@@ -4,6 +4,7 @@
     <meta charset="utf-8">
     <title>OSS</title>
     <base href="/appweb">
+<<<<<<< HEAD
 <!--<script src="https://code.highcharts.com/highcharts.js"></script>-->
    <script src="https://code.highcharts.com/stock/highstock.src.js"></script>
    <script src="https://code.highcharts.com/stock/highcharts-more.js"></script>
@@ -12,6 +13,22 @@
    <script src="https://code.highcharts.com/stock/modules/exporting.js"></script>
    <script type="text/javascript" src="https://www.highcharts.com/samples/data/usdeur.js"></script>  
    <script src="http://canvasjs.com/assets/script/canvasjs.min.js"></script>
+=======
+    <script>
+     (function() {
+      window['_app_base'] = '/' + window.location.pathname.split('/')[1];
+      })();
+    </script>
+    <!-- 1. Load libraries -->
+     <!-- Polyfill(s) for older browsers -->
+    <script src="node_modules/core-js/client/shim.min.js"></script>
+    <script src="node_modules/zone.js/dist/zone.js"></script>
+    <script src="node_modules/reflect-metadata/Reflect.js"></script>
+    <script src="node_modules/systemjs/dist/system.src.js"></script>
+
+    <!-- 2. Configure SystemJS -->
+    <script src="http://canvasjs.com/assets/script/canvasjs.min.js"></script>
+>>>>>>> 4c2ee4987027b63ad242dab14da597655c24ad03
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="icon" type="image/x-icon" href="favicon.ico">
 </head>
