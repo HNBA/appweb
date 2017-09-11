@@ -1,0 +1,22 @@
+#
+# parameters: plugin_name, plugin_version
+#
+
+- name: check logstash plugins
+  command: /usr/share/logstash/bin/logstash-plugin list
+  register: installed_plugins
+
+- block:
+  - name: Stop logstash service 
+    service: name=logstash state=stopped
+  - name: install {{ plugin_name }} plugin
+    environment: { NODE_TLS_REJECT_UNAUTHORIZED: 0 }
+    command: /usr/share/logstash/bin/logstash-plugin install {{ plugin_name }}
+  when: plugin_version != "" and "{{ plugin_name }}" not in installed_plugins.stdout
+
+- block:
+  - name: Stop logstash service
+    service: name=logstash state=stopped
+  - name: remove {{ plugin_name }} plugin
+    command: /usr/share/logstash/bin/logstash-plugin remove {{ plugin_name }}
+  when: plugin_version == "" and "{{ plugin_name }}" in installed_plugins.stdout

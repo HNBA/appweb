@@ -1,0 +1,29 @@
+import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+
+@Component({
+    selector: 'app-login',
+    templateUrl: './login.component.html',
+    styleUrls: ['./login.component.scss']
+})
+export class LoginComponent implements OnInit {
+
+constructor(public router: Router) {
+    this.data = {
+      name: '',
+      password: ''
+    };
+ }
+
+    ngOnInit() { }
+
+    //onLoggedin() {
+      //  localStorage.setItem('isLoggedin', 'true');
+    //}
+
+    onSubmit() {
+    this.http.post('http://213.32.115.155/login', JSON.stringify(this.data))
+        .subscribe(...);
+  }
+
+}

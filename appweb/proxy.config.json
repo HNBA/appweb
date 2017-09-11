@@ -1,0 +1,8 @@
+{
+    "/getlogs/":{
+            "https": true,
+            "target":"https://213.32.115.155",
+            "secure": false,
+            "logLevel": "debug"
+    }
+}

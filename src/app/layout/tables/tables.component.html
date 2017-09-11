@@ -1,0 +1,93 @@
+
+
+<div class="card-block" style="-webkit-box-shadow: 0 3px 9px rgba(0,0,0,0.175);box-shadow: 0 3px 9px rgba(0,0,0,0.175);background-color:#F2F2F2;">
+<div class="row">
+    <div class="col-md-4 text-xs-center">
+                 <ul class="timeline" style="background-color: white;" >
+        <li>
+            <div class="timeline-badge" [style.background-color]="setColor()"><i class="fa fa-times"></i>
+            </div>
+            <div class="timeline-panel">
+                <div class="timeline-heading">
+                    <h4 class="timeline-title"> Servers</h4>
+                </div>
+                <div class="timeline-body">
+                 <div class="etat"><p class="btn btn-link" style="margin-left: 5%;"> <a [routerLink]="['/details']" [routerLinkActive]="['router-link-active']">Bastion </a> <i class="fa" style="z-index: 100;position: absolute;top: 17%;left: 30%;width: 20px;height: 20px;margin-left: 30%;border-radius: 50% 50% 50% 50%;text-align: center;font-size: 1.4em;line-height: 10px;color: #fff;" [style.background-color]="setColor()"></i></p></div>
+                    <div class="etat"><p class="btn btn-link" style="margin-left: 5%;"><a [routerLink]="['/details']" [routerLinkActive]="['router-link-active']">Webserver </a> <i class="fa" style="z-index: 100;position: absolute;top: 35%;left: 30%;width: 20px;height: 20px;margin-left: 30%;border-radius: 50% 50% 50% 50%;text-align: center;font-size: 1.4em;line-height: 10px;color: #fff;background-color:green;"></i></p></div>
+                    <div class="etat"><p class="btn btn-link" style="margin-left: 5%;"><a [routerLink]="['/details']" [routerLinkActive]="['router-link-active']">Node-0</a> <i class="fa" style="z-index: 100;position: absolute;top: 51%;left: 30%;width: 20px;height: 20px;margin-left: 30%;border-radius: 50% 50% 50% 50%;text-align: center;font-size: 1.4em;line-height: 10px;color: #fff;background-color:green;"></i></p></div>
+                    <div class="etat"><p class="btn btn-link" style="margin-left: 5%;"><a [routerLink]="['/details']" [routerLinkActive]="['router-link-active']">Node-1 </a> <i class="fa" style="z-index: 100;position: absolute;top: 67%;left: 30%;width: 20px;height: 20px;margin-left: 30%;border-radius: 50% 50% 50% 50%;text-align: center;font-size: 1.4em;line-height: 10px;color: #fff;background-color:green;"></i></p></div>
+                    <div class="etat"><p class="btn btn-link" style="margin-left: 5%;"><a [routerLink]="['/details']" [routerLinkActive]="['router-link-active']">Node-2 </a> <i class="fa" style="z-index: 100;position: absolute;top: 82%;left: 30%;width: 20px;height: 20px;margin-left: 30%;border-radius: 50% 50% 50% 50%;text-align: center;font-size: 1.4em;line-height: 10px;color: #fff;background-color:green;"></i></p></div>
+                </div>
+            </div>
+        </li>
+         </ul>
+    </div>
+    <div class="col-md-4 text-xs-center">
+    
+                <ul class="timeline" style="background-color: white;" >
+        <li>
+            <div class="timeline-badge-midd"><i class="fa fa-warning"></i>
+            </div>
+            <div class="timeline-panel">
+                <div class="timeline-heading">
+                    <h4 class="timeline-title"> Middlewares</h4>
+                </div>
+                <div class="timeline-body">
+                    <div class="etat"><p class="btn btn-link"> <a [routerLink]="['/details']" [routerLinkActive]="['router-link-active']"> Middleware 1 </a> <i class="fa" style="z-index: 100;position: absolute;top: 17%;left: 30%;width: 20px;height: 20px;margin-left: 30%;border-radius: 50% 50% 50% 50%;text-align: center;font-size: 1.4em;line-height: 10px;color: #fff;background-color:orange;"></i></p></div>
+                    <div class="etat"><p class="btn btn-link"> <a [routerLink]="['/details']" [routerLinkActive]="['router-link-active']">Middleware 2 </a> <i class="fa" style="z-index: 100;position: absolute;top: 35%;left: 30%;width: 20px;height: 20px;margin-left: 30%;border-radius: 50% 50% 50% 50%;text-align: center;font-size: 1.4em;line-height: 10px;color: #fff;background-color:green;"></i></p></div>
+                    <div class="etat"><p class="btn btn-link"> <a [routerLink]="['/details']" [routerLinkActive]="['router-link-active']">Middleware 3 </a> <i class="fa" style="z-index: 100;position: absolute;top: 51%;left: 30%;width: 20px;height: 20px;margin-left: 30%;border-radius: 50% 50% 50% 50%;text-align: center;font-size: 1.4em;line-height: 10px;color: #fff;background-color:green;"></i></p></div>
+                    <div class="etat"><p class="btn btn-link"> <a [routerLink]="['/details']" [routerLinkActive]="['router-link-active']">Middleware 4 </a> <i class="fa" style="z-index: 100;position: absolute;top: 67%;left: 30%;width: 20px;height: 20px;margin-left: 30%;border-radius: 50% 50% 50% 50%;text-align: center;font-size: 1.4em;line-height: 10px;color: #fff;background-color:green;"></i></p></div>
+                    <div class="etat"><p class="btn btn-link"> <a [routerLink]="['/details']" [routerLinkActive]="['router-link-active']">Middleware 5 </a> <i class="fa" style="z-index: 100;position: absolute;top: 82%;left: 30%;width: 20px;height: 20px;margin-left: 30%;border-radius: 50% 50% 50% 50%;text-align: center;font-size: 1.4em;line-height: 10px;color: #fff;background-color:green;"></i></p></div>
+                    
+                </div>
+            </div>
+        </li>
+         </ul>       
+</div>
+<div class="col-md-4 text-xs-center">
+ <ul class="timeline" style="background-color: white;">
+        <li>
+            <div class="timeline-badge"><i class="fa fa-check"></i>
+            </div>
+            <div class="timeline-panel">
+                <div class="timeline-heading">
+                    <h4 class="timeline-title"> Softwares</h4>
+                </div>
+                <div class="timeline-body">
+                    <div class="etat"><p class="btn btn-link"><a [routerLink]="['/details']" [routerLinkActive]="['router-link-active']">Software 1 </a> <i class="fa" style="z-index: 100;position: absolute;top: 17%;left: 30%;width: 20px;height: 20px;margin-left: 30%;border-radius: 50% 50% 50% 50%;text-align: center;font-size: 1.4em;line-height: 10px;color: #fff;background-color:green;"></i></p></div>
+                    <div class="etat"><p class="btn btn-link"><a [routerLink]="['/details']" [routerLinkActive]="['router-link-active']">Software 2 </a> <i class="fa" style="z-index: 100;position: absolute;top: 35%;left: 30%;width: 20px;height: 20px;margin-left: 30%;border-radius: 50% 50% 50% 50%;text-align: center;font-size: 1.4em;line-height: 10px;color: #fff;background-color:green;"></i></p></div>
+                    <div class="etat"><p class="btn btn-link"><a [routerLink]="['/details']" [routerLinkActive]="['router-link-active']">Software 3 </a> <i class="fa" style="z-index: 100;position: absolute;top: 51%;left: 30%;width: 20px;height: 20px;margin-left: 30%;border-radius: 50% 50% 50% 50%;text-align: center;font-size: 1.4em;line-height: 10px;color: #fff;background-color:green;"></i></p></div>
+                    <div class="etat"><p class="btn btn-link"><a [routerLink]="['/details']" [routerLinkActive]="['router-link-active']">Software 4 </a> <i class="fa" style="z-index: 100;position: absolute;top: 67%;left: 30%;width: 20px;height: 20px;margin-left: 30%;border-radius: 50% 50% 50% 50%;text-align: center;font-size: 1.4em;line-height: 10px;color: #fff;background-color:green;"></i></p></div>
+                    <div class="etat"><p class="btn btn-link"><a [routerLink]="['/details']" [routerLinkActive]="['router-link-active']">Software 5 </a> <i class="fa" style="z-index: 100;position: absolute;top: 82%;left: 30%;width: 20px;height: 20px;margin-left: 30%;border-radius: 50% 50% 50% 50%;text-align: center;font-size: 1.4em;line-height: 10px;color: #fff;background-color:green;"></i></p></div>
+                </div>
+            </div>
+        </li>
+         </ul>
+    </div>
+</div>
+<br>
+<!--</div>-->
+<div class="row">
+    <div class="col-xl-4 text-xs-center">
+        <div class="card">
+            <div class="card-block" style="-webkit-box-shadow: 0 1px 6px rgba(0,0,0,0.175);box-shadow: 0 1px 6px rgba(0,0,0,0.175);">
+                  <div id="container" style="height: 400px; min-width: 300px"></div>
+            </div>
+        </div>
+    </div>
+<div class="col-xl-4 text-xs-center">
+        <div class="card">
+            <div class="card-block" style="-webkit-box-shadow: 0 3px 9px rgba(0,0,0,0.175);box-shadow: 0 3px 9px rgba(0,0,0,0.175);">
+                <div id="ramcontainer" style="height: 400px; min-width: 300px"></div>
+            </div>
+        </div>
+    </div>
+<div class="col-xl-4 text-xs-center">
+    <div class="card mb-4 text-center" style="-webkit-box-shadow: 0 1px 6px rgba(0,0,0,0.175);box-shadow: 0 1px 6px rgba(0,0,0,0.175);">
+         Disk Storage
+        
+             <canvas baseChart style="height:416px;" [data]="pieChartData" [labels]="pieChartLabels" [chartType]="pieChartType" (chartHover)="chartHovered($event)" (chartClick)="chartClicked($event)">
+            </canvas>
+        
+    </div>
+</div>

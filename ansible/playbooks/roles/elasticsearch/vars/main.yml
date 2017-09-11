@@ -1,0 +1,9 @@
+---
+elasticsearch_version: 2.4.5
+es_data_dir:
+  - /u01/elasticsearch
+es_logs_dir: /var/log/elasticsearch
+es_bin_dir: "/usr/share/elasticsearch/bin"
+es_plugin_dir: "/usr/share/elasticsearch/plugins"
+es_plugin_repo: "{{ home }}elasticsearch"
+service_name: elasticsearch

@@ -1,0 +1,84 @@
+---
+#~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+# CPOD1 is the development environment
+# components : nodejs, elasticsearch, kibana, phpldap, ldap, elastalert,
+# apache2, logstash, filebeat, collectd
+#~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+# Role to install minimum requirements on all nodes
+- hosts: all
+  roles:
+    - {role: "init", tags: [ init ]}
+
+# Role to install nodejs on webserver
+- hosts: webserver
+  tasks:
+   - name: unfold nodejs
+     shell: xz -c -d {{ home }}node-v6.10.2-linux-x64.tar.xz|tar -x -C /tmp
+   - name: install nodejs
+     shell: cp  -r /tmp/node-v6.10.2-linux-x64/* /usr/
+   - name: clean stuff
+     shell: rm -rf  /tmp/node-v6.10.2-linux-x64.*
+
+#Role to install apache2 and ldap on bastion
+- hosts: bastion
+  roles:
+    - {role: "apache2", files: [ "repos.conf" ], tags: [ apache ]}
+    - {role: "ldap", tags: [ ldap ]}
+
+#Role to install phpldap and apache2 on webserver
+- hosts: webserver
+  roles:
+    - {role: "phpldap", tags: [ phpldap ] }
+    - {role: "apache2", files: [ "0ssl.conf" ], tags: [ apache ]}
+
+#Role to install elasticsearch and kibana on servers defined in inventories
+- hosts: elasticsearch,kibana
+  vars_files:
+    - secrets/passwords.yml
+  roles:
+    - {role: elasticsearch , tags: [elk, elasticsearch],
+        es_cluster_name: "phenix-elk",
+        elasticsearch_version: 2.4.0,
+        es_heap_size: "31g",
+        es_refresh_interval: "1s",
+        es_clients: "{{ groups['kibana'] }}",
+        index_mapper_dynamic: true }
+
+#Role to install logstash on servers defined in inventories
+- hosts: logstash
+  vars_files:
+    - secrets/passwords.yml
+  roles:
+    - {role: "logstash", tags: [elk, logstash]}
+
+#Role to install filebeat and collectd on all hosts
+- hosts: all
+  vars_files:
+    - secrets/passwords.yml
+  roles:
+    - {role: "filebeat", tags: [elk, filebeat]}
+    - {role: "collectd", tags: [collectd]}
+
+#Role to install the appweb on servers after elasticsearch because the role will test the connection against elasticsearch and ldap
+- hosts: webserver
+  vars_files:
+    - secrets/passwords.yml
+  roles:
+    - {role: "appweb", tags: [appweb]}
+
+#Role to install elastalert on webserver
+- hosts: webserver
+  vars_files:
+    - secrets/passwords.yml
+  roles:
+    - {role: "elastalert", tags: [elastalert]}
+
+
+#Role to install kibana on servers defined in inventories
+- hosts: kibana
+  vars_files:
+    - secrets/passwords.yml
+  roles:
+    - {role: "kibana", tags: [elk, kibana], es_host: '{{ inventory_hostname }}:{{ es_api_port }}'}
+

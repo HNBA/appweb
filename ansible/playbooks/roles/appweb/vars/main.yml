@@ -1,0 +1,6 @@
+---
+elasticsearch_path: localhost:9200
+login_es: admin
+pwd_es: trainees
+
+

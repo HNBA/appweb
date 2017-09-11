@@ -1,0 +1,77 @@
+    grok {
+      match => { "message" => "(?<date>.*?) (?<id>[0-9]+) \[(?<addr>.*?)\] (?<logtype>.{5}) (?<class>[^ ]+) - (?<logmsg>.*)" }
+      match => { "message" => "^com.carrefour.phenix.gateway.sftp.handle.MalformedZipFileException: file (?<file>[^ ]+) (?<error>.*)" }
+    }
+    grok {
+      match => { "logmsg" => [
+
+2016-11-11 14:15:16.873 2049584417 [sshd-HdfsSubsystemFactory-thread-1] ERROR c.c.p.g.s.h.HdfsFileHandlerController - Failed to apply handler UnzipAnonymizeGzipHandler to /phenix/Wrk_Dir/stagingSales_Sites/HYP/F_CARINE_JE/201611/20161111141516.7328_20161110_JE_HYPER.gz
+
+2016-11-08 06:30:25.044 1762492588 [sshd-HdfsSubsystemFactory-thread-1] INFO  c.c.p.g.sftp.server.HdfsSubsystem - Success handling /phenix/Raw_Data/Sales_Sites/HYP/F_CARINE_JE/201611/20161108063024.7321_20161106_JE_HYPER.gz
+
+2016-11-08 06:30:25.025 1762492569 [sshd-HdfsSubsystemFactory-thread-1] INFO  c.c.p.g.s.h.MoveToPublicLocationHandler - moving file from /phenix/Wrk_Dir/stagingSales_Sites/HYP/F_CARINE_JE/201611 20161108063024.7321_20161106_JE_HYPER.gz to /phenix/Raw_Data/Sales_Sites/HYP/F_CARINE_JE/201611 20161108063024.7321_20161106_JE_HYPER.gz
+
+2016-11-28 06:30:40.668 1082557012 [sshd-HdfsSubsystemFactory-thread-1] INFO  c.c.p.g.s.h.UnzipAnonymizeGzipHandler - unzip and gzip /phenix/Wrk_Dir/stagingSales_Sites/HYP/F_CARINE_JE/201611 20161128063040.0155_20161127_JE_HYPER.gz with com.carrefour.phenix.gateway.sftp.handle.UnzipAnonymizeGzipHandler handler
+
+2016-11-29 06:31:06.725 1168983069 [sshd-HdfsSubsystemFactory-thread-1] INFO  c.c.p.g.s.h.FileReceivedNotifierHandler - notify file 20161129063105.0032_20161128_JE_HYPER.gz reception
+
+2016-11-29 06:30:37.481 1168953825 [sshd-SshServer[2e6f610d]-nio2-thread-29] INFO  o.a.s.s.session.ServerSessionImpl - Server session created from /10.55.9.4:62871
+
+2016-11-29 06:31:05.328 1168981672 [sshd-SshServer[2e6f610d]-nio2-thread-4] INFO  o.a.s.s.s.ServerUserAuthService - Session interffh@/10.55.9.4:62895 authenticated
+
+2016-11-15 17:33:05.801 1614 [phenix-akka.actor.default-dispatcher-5] INFO  c.c.p.monitoring.MetricsReporter - start metrics
+
+2016-11-15 17:48:04.156 846  [main] INFO  o.a.sshd.common.util.SecurityUtils - Trying to register BouncyCastle as a JCE provider
+    
+2016-11-15 17:48:04.408 1098 [main] INFO  o.a.sshd.common.util.SecurityUtils - Registration succeeded
+
+2016-11-15 17:48:09.944 186589964 [phenix-akka.actor.default-dispatcher-9] INFO  security - Authentication is not enabled for route 'http://slptgs00101.dcn.fr.carrefour.com:9022/phenix/api/ping/'
+
+2016-11-15 17:48:04.432 1122 [main] INFO  c.c.p.g.s.s.PublickeyAuthenticatorImpl - /var/lib/gateway-sftp/authorized_keys for public-keys
+
+2016-11-15 17:33:05.739 1552 [phenix-akka.actor.default-dispatcher-5] INFO  c.c.p.service.common.AdminRoutes - *                     Admin routes                                                          *
+
+2016-11-15 17:33:05.739 1552 [phenix-akka.actor.default-dispatcher-5] INFO  c.c.p.service.common.AdminRoutes - *                       /version                                                            *
+
+2016-11-15 17:48:05.816 2160 [phenix-akka.actor.default-dispatcher-5] INFO  c.c.phenix.service.common.Server - server successfully bound to 0.0.0.0:9022
+
+2016-11-14 16:14:16.079 94556099 [pool-1-thread-1] INFO  o.a.s.s.session.ServerSessionImpl - Disconnecting: 2 - User session has timed out idling after 600000 ms.
+
+2016-11-11 14:15:16.874 2049584418 [sshd-HdfsSubsystemFactory-thread-1] ERROR c.c.p.g.sftp.server.HdfsSubsystem - Error while handling /phenix/Raw_Data/Sales_Sites/HYP/F_CARINE_JE/201611/20161111141516.7328_20161110_JE_HYPER.gz : file 20161111141516.7328_20161110_JE_HYPER.gz dont contain zip entry
+
+2016-11-16 13:37:33.073 257953093 [phenix-akka.actor.default-dispatcher-10] WARN  c.c.p.service.common.BuildInfoRoute - *                                                                                             *
+
+2016-11-16 13:37:33.073 257953093 [phenix-akka.actor.default-dispatcher-10] WARN  c.c.p.service.common.BuildInfoRoute - * It is not your project override BuildInfoRoute#buildInfoToJson with BuildInfo##Your project *
+
+16/11/29 06:35:54 INFO security.UserGroupInformation: Login successful for user phenix using keytab file /var/lib/phenix/phenix.keytab
+
+16/11/11 11:02:36 WARN hdfs.DFSClient: Slow waitForAckedSeqno took 40816ms (threshold=30000ms)
+
+16/11/15 17:48:12 WARN util.NativeCodeLoader: Unable to load native-hadoop library for your platform... using builtin-java classes where applicable
+
+2016-11-13 14:29:54.694 1894714 [kafka-producer-network-thread | producer-1] WARN  o.a.kafka.common.network.Selector - Error in I/O with slptps10101/10.54.226.60
+
+16/11/14 10:03:53 INFO retry.RetryInvocationHandler: Exception while invoking getFileInfo of class ClientNamenodeProtocolTranslatorPB over slpnns10101.dcn.fr.carrefour.com/10.54.226.4:8020. Trying to fail over immediately.
+
+16/04/13 15:46:54 WARN hdfs.LeaseRenewer: Failed to renew lease for [DFSClient_NONMAPREDUCE_-1168098802_46] for 2752 seconds.  Will retry shortly ...
+
+16/04/13 15:45:13 WARN retry.RetryInvocationHandler: Exception while invoking class org.apache.hadoop.hdfs.protocolPB.ClientNamenodeProtocolTranslatorPB.renewLease over slpnns00101.dcn.fr.carrefour.com/10.54.224.4:8020. Not retrying because failovers (15) exceeded maximum allowed (15)
+
+16/03/31 10:52:30 INFO retry.RetryInvocationHandler: Exception while invoking renewLease of class ClientNamenodeProtocolTranslatorPB over slpnns00101.dcn.fr.carrefour.com/10.54.224.4:8020 after 8 fail over attempts. Trying to fail over after sleeping for 9388ms.
+
+
+    }
+    grok {
+      match => {
+       "logmsg" => [
+          "(?<action>Server session created) from /%{IP:ip}:(?<port>[0-9]+)",
+          "Session (?<session>.*?) (?<action>authenticated)",
+          "(?<action>moving file) from (?<fromfile>.*?) to (?<tofile>.*)",
+          "(?<action>notify file) (?<file>.*?) reception",
+          "(?<action>Success handling) (?<file>.*?)",
+          "(?<action>Error in I/O) with (?<file>.*)",
+          "(?<action>Exception caught)"
+         ]
+       }
+    }
+

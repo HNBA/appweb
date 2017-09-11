@@ -1,0 +1,9 @@
+---
+
+- name: install ldap and ldap utils
+  apt: name=sldap
+  apt: name=ldap-utils
+
+- name: install config file ldap (specific)
+  template: src=ldap.conf.j2  dest=/etc/ldap/ldap.conf 
+

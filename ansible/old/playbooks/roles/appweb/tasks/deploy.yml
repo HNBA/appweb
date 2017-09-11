@@ -1,0 +1,23 @@
+---
+- name: Create appweb group
+  group: name=appweb state=present
+
+- name: Create user in appweb group
+  user: name=appweb group=appweb shell=/bin/bash
+
+- name: install appweb
+  shell: curl http://bastion/repos/appweb/{{appweb_version}}.tar|tar -xf - -C /opt
+
+#- name: install appweb service
+# template: src=appweb.service.j2 dest=/etc/systemd/system/appweb.service
+
+- name: config appweb
+  template: src=config.json.j2 dest=/opt/appweb/config.json
+
+
+- name: config conection path appweb elastic
+  template: src=app_web.connection.j2  dest=/opt/appweb/src/connection1.js  mode=0644
+
+#- name: start appweb
+#  service: name=appweb state=started enabled=yes
+

@@ -1,0 +1,58 @@
+.label-danger {
+  background-color: #EE1010;
+}
+
+.label-warning {
+  background-color: #fa9938;
+}
+
+.label {
+  display: inline;
+  padding: .2em .6em .3em;
+  font-size: 100%;
+  font-weight: bold;
+  line-height: 1;
+  color: #fff;
+  text-align: right;
+  white-space: nowrap;
+  vertical-align: baseline;
+  border-radius: .25em;
+}
+
+.bs-callout-danger {
+    padding: 10px;
+    margin: 10px 0;
+    border: 2px solid #EE1010;
+    border-left-width: 35px;
+    border-radius: 3px;
+    border-left-color: #EE1010;
+}
+
+.bs-callout-warning {
+    padding: 10px;
+    margin: 10px 0;
+    border: 2px solid #fa9938;
+    border-left-width: 35px;
+    border-radius: 3px;
+    border-left-color: #fa9938;
+}
+
+.toast-pf .toast-pf-action {
+    margin-left: 15px;
+}
+
+.timeline[_ngcontent-c4] > li[_ngcontent-c4] > .timeline-badge[_ngcontent-c4] {
+    z-index: 100;
+    position: absolute;
+    top: 16px;
+    left: 90%;
+    width: 50px;
+    height: 50px;
+    margin-left: auto;
+    border-radius: 50% 50% 50% 50%;
+    text-align: center;
+    font-size: 1.4em;
+    line-height: 50px;
+    color: #fff;
+    background-color: #fa9938;
+}

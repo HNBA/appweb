@@ -1,0 +1,33 @@
+[all]
+node-0 host_ip=192.168.199.20 private_hostname=node-0 rack=r1
+node-1 host_ip=192.168.199.21 private_hostname=node-1 rack=r1
+node-2 host_ip=192.168.199.22 private_hostname=node-2 rack=r1
+bastion host_ip=192.168.199.5  private_hostname=bastion rack=r1
+webserver host_ip=192.168.199.27 private_hostname=webserver rack=r1
+
+[logstash]
+node-0
+node-1
+node-2
+
+[elasticsearch]
+node-0
+node-1
+node-2
+
+[kibana]
+webserver
+
+[trainees]
+webserver
+
+[apache2]
+webserver
+bastion
+
+[phpldap]
+webserver
+
+[all:vars]
+site=prod-cpod2
+ansible_python_interpreter=/usr/bin/python2.7

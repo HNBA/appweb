@@ -1,0 +1,14 @@
+[Unit]
+Description=appweb
+
+[Service]
+Type=simple
+User=appweb
+Group=appweb
+ExecStart=node /opt/appweb
+Restart=always
+WorkingDirectory=/opt/appweb
+
+[Install]
+WantedBy=multi-user.target
+~

@@ -1,0 +1,57 @@
+- name: check for service elasticsearch
+  shell: "service elasticsearch status"
+  register: svc_elasticsearch
+  failed_when: False
+
+- debug: var=svc_elasticsearch
+
+- name: check for service kibana
+  shell: "service kibana status"
+  register: svc_kibana
+  failed_when: False
+
+- debug: var=svc_kibana
+
+- block:
+    - name: download license, marvel, and marvel-agent
+      get_url:
+        url: "{{ phenix_packages_repository_common }}/marvel/{{ item }}"
+        dest: "/tmp/{{ item }}"
+        mode: 0644
+        validate_certs: no
+      with_items:
+        - "license-{{ marvel_version }}.zip"
+        - "marvel-agent-{{ marvel_version }}.zip"
+        - "marvel-{{ marvel_version }}.tar.gz"
+
+    - name: check elasticsearch plugins
+      command: /usr/share/elasticsearch/bin/plugin list
+      register: elasticsearch_plugins
+      when: svc_elasticsearch.rc == 0
+
+    - name: check kibana plugins
+      command: /opt/kibana/bin/kibana plugin --list
+      register: kibana_plugins
+      when: svc_kibana.rc == 0
+
+    - name: add marvel license
+      command: /usr/share/elasticsearch/bin/plugin install file:///tmp/license-{{ marvel_version }}.zip
+      when: svc_elasticsearch.rc == 0 and "license" not in elasticsearch_plugins.stdout
+
+    - name: add marvel-agent plugin
+      command: /usr/share/elasticsearch/bin/plugin install file:///tmp/marvel-agent-{{ marvel_version }}.zip
+      when: svc_elasticsearch.rc == 0 and "marvel-agent" not in elasticsearch_plugins.stdout
+
+    - name: add marvel plugin
+      command: /opt/kibana/bin/kibana plugin --install marvel --url file:///tmp/marvel-{{ marvel_version }}.tar.gz
+      when: svc_kibana.rc == 0 and "marvel" not in kibana_plugins.stdout
+
+    - name: restart elasticsearch
+      service: name=elasticsearch state=restarted enabled=yes 
+      when: svc_elasticsearch.rc == 0 and ("license" not in elasticsearch_plugins.stdout or "marvel-agent" not in elasticsearch_plugins.stdout)
+
+    - name: restart kibana
+      service: name=kibana state=restarted enabled=yes
+      when: svc_kibana.rc == 0 and "marvel" not in kibana_plugins
+
+  when: svc_elasticsearch.rc == 0 or svc_kibana.rc == 0

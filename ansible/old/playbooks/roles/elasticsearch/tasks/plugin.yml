@@ -1,0 +1,21 @@
+#
+# parameters: plugin_name, plugin_version
+#
+
+- name: check elasticsearch plugins
+  command: /usr/share/elasticsearch/bin/plugin list
+  register: installed_plugins
+
+- block:
+  - name: Stop elasticsearch services 
+    service: name=elasticsearch state=stopped
+  - name: install {{ plugin_name }} plugin
+    command: /usr/share/elasticsearch/bin/plugin install {{ elasticsearch_repository_plugins }}{{ plugin_name }}-{{ plugin_version }}.zip --batch
+  when: plugin_version != "" and "{{ plugin_name }}" not in installed_plugins.stdout
+
+- block:
+  - name: Stop elasticsearch services 
+    service: name=elasticsearch state=stopped
+  - name: remove {{ plugin_name }} plugin
+    command: /usr/share/elasticsearch/bin/plugin remove {{ plugin_name }}
+  when: plugin_version == "" and "{{ plugin_name }}" in installed_plugins.stdout

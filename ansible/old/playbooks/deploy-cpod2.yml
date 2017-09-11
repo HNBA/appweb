@@ -1,0 +1,55 @@
+---
+
+- hosts: all
+  tasks:
+    - name: install xz
+      apt: name=xz-utils
+    - name: get_url nodejs
+      get_url:
+         url: http://bastion/repos/node-v6.10.2-linux-x64.tar.xz
+         dest: /tmp/node-v6.10.2-linux-x64.tar.xz
+    - name: unfold nodejs
+      shell: xz -c -d /tmp/node-v6.10.2-linux-x64.tar.xz|tar -x -C /tmp
+    - name: install nodejs
+      shell: cp  -r /tmp/node-v6.10.2-linux-x64/* /usr/ 
+
+    - name: clean stuff
+      shell: rm -rf  /tmp/node-v6.10.2-linux-x64.*
+    
+
+
+- hosts: all
+  tasks:
+    - name: configure hosts
+      copy: src=hosts-cpod2  dest=/etc/hosts
+
+
+#- hosts: all
+#  gather_facts: False
+#  tasks:
+
+#    - name: update apt
+#      apt: state=present update_cache=yes
+#    - name: install python
+#      raw: test -e /us/bin/python || (apt -y update && apt install -y python-minimal)
+    - name: install jdk jre
+      apt: name=default-jre
+    - name: install jdk
+      apt: name=default-jdk
+#- hosts:
+#    - name install express js 
+#      apt: name=express-generator -g 
+- hosts: bastion
+  roles:
+    -  { role: "apache2", files: [ "repos.conf" ], tags: [ apache ]}
+# tasks:
+#   - name: install ldap
+#     apt: name=slapd
+#   - name: install ldap-utils
+#     apt: name=ldap-utils
+
+- hosts: webserver
+  roles:
+    -  { role: "phpldap", tags: [ phpldap ] }
+    -  { role: "apache2", files: [ "0ssl.conf" ], tags: [ apache ]}
+    -  { role: "appweb", tags: [ appweb ]}

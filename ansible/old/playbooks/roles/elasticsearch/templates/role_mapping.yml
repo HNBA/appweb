@@ -1,0 +1,28 @@
+# Role mapping configuration file which has elasticsearch roles as keys
+# that map to one or more user or group distinguished names
+
+admin:
+ - "cn=admin,cn=Users,dc=trainees,dc=ddns,dc=net"
+
+power_user:
+ - "cn=amine,cn=Users,dc=trainees,dc=ddns,dc=net"
+ - "cn=aziz,cn=Users,dc=trainees,dc=ddns,dc=net"
+ - "cn=hazem,cn=Users,dc=trainees,dc=ddns,dc=net"
+ - "cn=ferihane,cn=Users,dc=trainees,dc=ddns,dc=net"
+
+#transport_clients:
+# - "uid=phenix_admin,ou=people,dc=corp,dc=carrefour,dc=com"
+
+#kibana4_server:
+# - "uid=phenix_admin,ou=people,dc=corp,dc=carrefour,dc=com"
+
+#logstash:
+# - "uid=phenix_admin,ou=people,dc=corp,dc=carrefour,dc=com"
+
+#marvel_user:
+# - "uid=phenix_admin,ou=people,dc=corp,dc=carrefour,dc=com"
+
+#remote_marvel_agent:
+# - "uid=phenix_admin,ou=people,dc=corp,dc=carrefour,dc=com"
+
+

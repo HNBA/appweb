@@ -1,0 +1,78 @@
+---
+- name: install elasticsearch
+  apt: deb={{ elasticsearch_repository_plugins }}elasticsearch-{{ elasticsearch_version }}.deb state=present 
+  notify: Restart elasticsearch
+
+#- name: register elasticsearch service
+#  shell: chkconfig --add {{service_name}}
+#  changed_when: False
+
+- name: create elasticsearch data dir
+  file: path={{ item }} state=directory owner=elasticsearch group=elasticsearch mode=0755
+  with_items: "{{ es_data_dir }}"
+  when: inventory_hostname not in es_clients
+
+- name: create elasticsearch log dir
+  file: path={{ item }} state=directory owner=elasticsearch group=elasticsearch mode=0755
+  with_items: "{{ es_logs_dir }}"
+
+- name: Setup elasticsearch yml
+  template: src=elasticsearch.yml.j2 dest=/etc/elasticsearch/elasticsearch.yml owner=elasticsearch group=elasticsearch mode=0644
+  notify: Restart elasticsearch
+
+#- name: Deploy elasticsearch environment configurations
+#  template: src=elasticsearch.j2 dest=/etc/sysconfig/elasticsearch mode=0644
+#  notify: Restart elasticsearch
+
+- include: plugin.yml
+     plugin_name=license
+     plugin_version={% if license_version is defined %}{{ license_version }}{% endif %}
+
+- include: plugin.yml
+     plugin_name=head
+     plugin_version={% if head_version is defined %}{{ head_version }}{% endif %}
+
+- include: plugin.yml 
+     plugin_name=marvel-agent 
+     plugin_version={% if marvel_version is defined %}{{ marvel_version }}{% endif %}
+
+- include: plugin.yml 
+     plugin_name=lang-javascript
+     plugin_version={% if lang_javascript_version is defined %}{{ lang_javascript_version }}{% endif %}
+
+- include: plugin.yml
+     plugin_name=watcher
+     plugin_version={% if watcher_version is defined %}{{ watcher_version }}{% endif %}
+
+- include: plugin.yml 
+     plugin_name=shield
+     plugin_version={% if shield_version is defined %}{{ shield_version }}{% endif %}
+
+- name: Setup shield role mapping
+  template: src={{ item }} dest=/etc/elasticsearch/shield/{{ item }} owner=elasticsearch group=elasticsearch mode=0644
+  with_items:
+       - logging.yml
+       - role_mapping.yml
+       - roles.yml
+       - users
+       - users_roles
+  when: shield_version is defined
+  notify: Restart elasticsearch
+
+- name: Start elasticsearch services
+  service: name=elasticsearch state=started enabled=yes
+
+- name: copy elasticsearch license
+  copy: src={{ site }}-license.json dest=/etc/elasticsearch/{{ site }}-license.json
+
+plugin
+- name: Wait for elasticsearch to launch services
+  wait_for:  port={{ item }} delay=5 timeout=60
+  with_items:
+     - "{{ es_api_port }}"
+     - "{{ es_transport_port }}"
+
+#- name: update license
+#  shell: curl -XPUT -u 'admin:{{ vault_ldap_admin_pw }}' http://{{ play_hosts[0] }}:{{ es_api_port }}/_license -d @/etc/elasticsearch/{{ site }}-license.json
+#  run_once: true
+

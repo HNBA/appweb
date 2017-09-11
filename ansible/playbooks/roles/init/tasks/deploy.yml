@@ -1,0 +1,20 @@
+---
+
+- name: configure hosts
+  copy: src=../templates/hosts-cpod2  dest=/etc/hosts
+
+- name: update apt
+  apt: state=present update_cache=yes
+
+- name: install jdk jre
+  apt: name=default-jre
+
+- name: install jdk
+  apt: name=default-jdk
+
+- name: sync repos   
+  synchronize:
+    src: /home/ubuntu/repos/
+    dest: /home/ubuntu/repos/
+    recursive: yes
+

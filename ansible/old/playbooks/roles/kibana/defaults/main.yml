@@ -1,0 +1,7 @@
+---
+kibana_version: 4.6.4
+#marvel_version: 2.4.0
+shield_version: 2.4.4
+#sense_version: 2.0.0-beta7
+#reporting_version: 2.4.4
+kibana_repository_plugins: "http://bastion/repos/kibana/"

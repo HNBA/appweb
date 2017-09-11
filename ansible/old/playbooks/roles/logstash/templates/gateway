@@ -1,0 +1,14 @@
+    grok {
+       match => { "message" => "(?<date>.*?) (?<id>[0-9]+) \[(?<urls>([^ ]+:[0-9]+(\/[^ ]*?),)*?([^ ]+:[0-9]+(\/[^ ]*?)))|(?<class>.*?)\] (?<logtype>.{5}) (?<logmsg>.*)" }
+    }
+    grok {
+      match => { "logmsg" => [
+         "(?<xclass>.*?) - (?<action>state changed to Disconnected)",
+         "(?<xclass>.*?) - (?<action>state changed to SyncConnected)",
+         "(?<xclass>.*?) - \[(?<addr>.*?)\] \[(?<xid>.*?)\] (?<action>Topic rawStockMovement for subject stockmovements is un-available)",
+         "(?<xclass>.*?) - \[(?<addr>.*?)\] \[(?<xid>[0-9]+)\] (?<action>Topic tlog for subject tlog is un-available)",
+         "(?<xclass>.*?) - \[(?<addr>.*?)\] \[(?<xid>[0-9]+)\] (?<action>Topic supvlplog for subject supvlplog is un-available)",
+         "(?<yclass>.*?) - Message \[(?<xclass>.*?)\] from Actor\[(?<urlfrom>.*?)\] to Actor\[(?<urlfrom>.*?)\] (?<action>was not delivered. \[[0-9]+\] dead letters encountered.)"
+       ]}
+     }
+

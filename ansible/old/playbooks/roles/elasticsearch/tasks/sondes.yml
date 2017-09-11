@@ -1,0 +1,27 @@
+---
+- name: Add elasticsearch service sonde
+  icinga_check_service:
+    name: elasticsearch
+    check_type: service
+    state: present
+    hostname: "{{ inventory_hostname }}"
+    api_hostname: "{{ icinga.master_host }}"
+    api_user: icinga
+    api_password: "{{ user_icinga_pwd }}"
+    api_port: 5665
+    command_endpoint: "{{ inventory_hostname }}"
+    max_check_attempts: 5
+
+- name: Add elasticsearch cluster sonde
+  icinga_check_service:
+    name: Cluster_elasticsearch
+    check_type: checkelastic
+    state: present
+    hostname: "{{ inventory_hostname }}"
+    api_hostname: "{{ icinga.master_host }}"
+    api_user: icinga
+    api_password: "{{ user_icinga_pwd }}"
+    api_port: 5665
+    es_port: "{{ es_api_port }}"
+    command_endpoint: "{{ inventory_hostname }}"
+    max_check_attempts: 5

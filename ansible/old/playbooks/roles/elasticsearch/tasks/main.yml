@@ -1,0 +1,8 @@
+---
+- include: deploy.yml
+  tags: elasticsearch
+- include: health-check.yml
+  tags: [elasticsearch,check,check-elasticsearch]
+
+#- include: sondes.yml
+#  tags: [sondes,elasticsearch]

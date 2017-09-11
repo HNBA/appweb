@@ -1,0 +1,50 @@
+    grok {
+      match => { "message" => "(?<date>.*?) (?<id>[0-9]+) \[(?<addr>.*?)\] (?<logtype>.{5}) (?<class>[^ ]+) - (?<logmsg>.*)" }
+      match => { "message" => "^com.carrefour.phenix.gateway.sftp.handle.(?<logmsg>.*)" }
+    }  
+ 
+    grok {
+      match => {
+       "logmsg" => [
+         "(?<action>moving file) from (?<path>/.*?/.*?/.*?/.*?(/.*?/.*?)?) (?<filename>.*?) to",
+         "(?<action>notify file) (?<path>)(?<filename>.*?) reception",
+         "(?<action>Success handling) (?<path>/.*?/.*?/.*?/.*?(/.*?/.*?)?)/(?<filename>.*)",
+         "(?<action>Error) while handling (?<path>/.*?/.*?/.*?/.*?(/.*?/.*?)?)/(?<filename>.*)",
+         "(?<action>Failed to apply handler UnzipAnonymizeGzipHandler) to (?<path>/.*?/.*?/.*?/.*?(/.*?/.*?)?)/(?<filename>.*)",
+         "file (?<path>)(?<filename>.*?) (?<action>dont contain zip entry)",
+         "(?<action>MalformedZipFileException): file (?<path>)(?<filename>.*?) dont contain zip entry",
+         "(?<action>unzip and gzip) (?<path>/.*?/.*?/.*?/.*?(/.*?/.*?)?) (?<filename>.*?) with com.carrefour.phenix.gateway.sftp.handle.UnzipAnonymizeGzipHandler handler",
+         "Error while uploading to HDFS or deleting from temp file No lease on (?<path>/.*?/.*?/.*?/.*?(/.*?/.*?)?)/(?<filename>.*?) \(inode (?<inode>.*?)\): (?<action>File does not exist).*",
+         "org.apache.hadoop.ipc.RemoteException: No lease on (?<path>/.*?/.*?/.*?/.*?(/.*?/.*?)?) (?<filename>.*?) \(inode (?<inode>.*?)\): (?<action>File does not exist)"
+       ]
+     }
+   }
+   grok {
+     match => {
+      "path" => [
+        "/.*?/(?<root_folder>.*?)/(?<file_source_type>.*?)/(?<file_substype>.*?)/(?<file_type>.*?)/(?<month_key>.*?)",
+        "/.*?/(?<root_folder>.*?)/(?<file_source_type>UNKNOWN)/(?<month_key>.*?)"
+      ]
+    }
+  }
+  grok { 
+     match => {
+      "filename" => [
+         "(?<file_timestamp>..............)\.F_ST_PRICE_KRO.HYP_MHK2PV_(?<entity>....)\.(?<file_yyyymmddhhmmsssss>.................)\.DEL.gz",
+         "(?<file_timestamp>..............)\.HYP_MHK.*?_(?<entity>....)\.(?<file_yyyymmddhhmmsssss>.................)\.gz",
+         "(?<file_timestamp>..............)\.F_PRODUCT.CRP.(?<file_yyyymmddhhmmss>..............)\.avro.bz2",
+         "(?<file_timestamp>..............)\.eCRM_UNICA_D_(?<file_yyyymmddhhmm>............)\.csv.tar.gz",
+         "(?<file_timestamp>..............)\.(?<file_ddmmyy>......)VJ.ZIP.S(?<entity>....).?_TVA.(?<file_yyyymmddhhmm>............)\.gz",
+         "(?<file_timestamp>..............)\.F_GF_SAL_OBJ_SIT_DAY.(?<file_yyyymmddhhmmss>..............)\.DEL.gz",
+         "(?<file_timestamp>..............)\.PNXF_PRODUCT_EXT.(?<file_yyyymmddhhmmss>..............)\.DEL.gz",
+         "(?<file_timestamp>..............)\.LKGF_PRODUCT_CLONES.(?<file_yyyymmddhhmmss>..............)\.DEL.gz",
+         "(?<file_timestamp>..............)\..*?__(?<file_ddmmyy>......)DSLVJ.ZIP.S(?<entity>....)",
+         "(?<file_timestamp>..............)\.(?<entity>....)_(?<file_yyyymmdd>........)_.*?\.(ZIP|gz)",
+         "(?<file_timestamp>..............)\.(?<file_yyyymmdd>........)FRA...SDCISL101.FT",
+         "(?<file_timestamp>..............)\..*?__(?<file_ddmmyy>......)VJ.ZIP.S(?<entity>....)",
+         "(?<file_timestamp>..............)\.ATK_MOV_D_.*?\.D(?<entity>....)(?<file_ddmmyy>......)",
+         "(?<file_timestamp>..............)\.ATK_STK_H_MVT(?<entity>....)\.D(?<file_yymmddhh>........)",
+         "(?<file_timestamp>..............)\.(?<file_ddmmyy>......)SUPVJ.ZIP.S(?<entity>....)"
+      ]
+    }
+  }

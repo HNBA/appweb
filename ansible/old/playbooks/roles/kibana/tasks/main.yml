@@ -1,0 +1,5 @@
+---
+- include: deploy.yml
+  tags: kibana
+- include: health-check.yml
+  tags: [kibana,check,check-kibana]

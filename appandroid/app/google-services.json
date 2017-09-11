@@ -1,0 +1,42 @@
+{
+  "project_info": {
+    "project_number": "646006312198",
+    "firebase_url": "https://materialtabs-ec0b4.firebaseio.com",
+    "project_id": "materialtabs-ec0b4",
+    "storage_bucket": "materialtabs-ec0b4.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:646006312198:android:2a1b76cd8bddeb46",
+        "android_client_info": {
+          "package_name": "info.androidhive.materialtabs"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "646006312198-g2j5a06jresn2534vutu75bl1prtgmml.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCgb75uUZAWseByGZtfaHXhlKuRIP1_aVw"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

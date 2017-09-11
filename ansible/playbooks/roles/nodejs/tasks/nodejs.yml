@@ -1,0 +1,7 @@
+---
+- name: unfold nodejs
+  shell: xz -c -d {{ home }}node-v6.10.2-linux-x64.tar.xz|tar -x -C /tmp
+- name: install nodejs
+  shell: cp  -r /tmp/node-v6.10.2-linux-x64/* /usr/
+- name: clean stuff
+  shell: rm -rf  /tmp/node-v6.10.2-linux-x64.*

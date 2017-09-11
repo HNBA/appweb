@@ -1,0 +1,2 @@
+sudo ansible-playbook playbooks/log-management.yml -i inventories/trainees.hosts --skip elasticsearch
+

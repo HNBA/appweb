@@ -1,0 +1,11 @@
+      grok {
+ match => { "message" =>"(?<date>[a-zA-Z]{3} [0-9]?[0-9] ..:..:..) (?<hostname>.*?) (?<process>.*?): .*?: session (?<status>.*?) for user (?<user>.*?) (by (?<ruser>.*?)\(uid=(?<uid>[0-9]*?)\))?"
+
+}
+   }
+
+
+
+
+
+
